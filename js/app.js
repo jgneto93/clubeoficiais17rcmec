@@ -55,10 +55,32 @@ function selecionarTurno(botao, turno) {
 }
 
 document.getElementById("btnReservar").onclick = async () => {
-  if (!turnoSelecionado) {
+  const turno = document.getElementById("turno").value;
+
+  if (!turno) {
     mensagem.innerText = "Selecione um turno";
     return;
   }
+
+  const dados = {
+    nome: document.getElementById("nome").value,
+    posto: document.getElementById("posto").value,
+    local: document.getElementById("local").value,
+    data: document.getElementById("data").value,
+    turno: turno
+  };
+
+  const res = await fetch(API, {
+    method: "POST",
+    body: JSON.stringify(dados)
+  });
+
+  const r = await res.json();
+  mensagem.innerText =
+    r.status === "ok"
+      ? "Reserva confirmada!"
+      : "⚠️ Este local já está reservado nesse turno.";
+};
 
   const dados = {
     nome: document.getElementById("nome").value,
