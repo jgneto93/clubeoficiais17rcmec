@@ -11,28 +11,41 @@ dataInput.addEventListener("change", carregarTurnos);
 localSelect.addEventListener("change", carregarTurnos);
 
 async function carregarTurnos() {
-  turnosDiv.innerHTML = "Carregando...";
+  turnosDiv.innerHTML = "";
+  mensagem.innerText = "";
   turnoSelecionado = null;
 
-  const dataInput = document.getElementById("data");
+  const data = dataInput.value;
+  const local = localSelect.value;
 
-  flatpickr(dataInput, {
-  dateFormat: "Y-m-d",
-  minDate: "today",
-  onChange: carregarTurnos
-  });
+  if (!data) {
+    turnosDiv.innerHTML = "<em>Selecione uma data</em>";
+    return;
+  }
 
-  const res = await fetch(`${API}?acao=disponibilidade&data=${data}&local=${local}`);
-  const turnos = await res.json();
+  turnosDiv.innerHTML = "Carregando...";
 
-  turnosDiv.innerHTML = "";
+  try {
+    const res = await fetch(`${API}?acao=disponibilidade&data=${data}&local=${local}`);
+    const turnos = await res.json();
 
-  turnos.forEach(turno => {
-    const btn = document.createElement("button");
-    btn.innerText = turno;
-    btn.onclick = () => selecionarTurno(btn, turno);
-    turnosDiv.appendChild(btn);
-  });
+    turnosDiv.innerHTML = "";
+
+    if (turnos.length === 0) {
+      turnosDiv.innerHTML = "<strong>Nenhum turno disponível</strong>";
+      return;
+    }
+
+    turnos.forEach(turno => {
+      const btn = document.createElement("button");
+      btn.innerText = turno;
+      btn.onclick = () => selecionarTurno(btn, turno);
+      turnosDiv.appendChild(btn);
+    });
+
+  } catch (e) {
+    turnosDiv.innerHTML = "Erro ao carregar turnos";
+  }
 }
 
 function selecionarTurno(botao, turno) {
