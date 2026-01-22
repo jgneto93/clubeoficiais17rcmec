@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Reserva de Espaços – Clube</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="overlay">
+    <h1>Reserva de Espaços</h1>
+    <p>Quiosques e Salão de Festas</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="card">
+    <h2>Identificação</h2>
+    <div class="grid-2">
+      <input id="nome" placeholder="Nome de Guerra">
+      <input id="posto" placeholder="Posto / Graduação">
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Reserva</h2>
+
+    <label>Local</label>
+    <select id="local">
+      <option>Quiosque Piscina</option>
+      <option>Quiosque Churrasqueira</option>
+      <option>Salão de Festas</option>
+    </select>
+
+    <label>Data</label>
+    <input type="date" id="data">
+
+    <label>Turno disponível</label>
+    <div id="turnos" class="turnos"></div>
+
+    <button id="btnReservar">Confirmar Reserva</button>
+  </section>
+
+  <div id="mensagem" class="mensagem"></div>
+
+</main>
+
+<script src="js/app.js"></script>
+</body>
+</html>
