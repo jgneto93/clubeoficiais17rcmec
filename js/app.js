@@ -14,9 +14,13 @@ async function carregarTurnos() {
   turnosDiv.innerHTML = "Carregando...";
   turnoSelecionado = null;
 
-  const data = dataInput.value;
-  const local = localSelect.value;
-  if (!data) return;
+  const dataInput = document.getElementById("data");
+
+  flatpickr(dataInput, {
+  dateFormat: "Y-m-d",
+  minDate: "today",
+  onChange: carregarTurnos
+  });
 
   const res = await fetch(`${API}?acao=disponibilidade&data=${data}&local=${local}`);
   const turnos = await res.json();
