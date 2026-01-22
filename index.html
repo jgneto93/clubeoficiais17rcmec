@@ -40,8 +40,14 @@
     <label>Data</label>
     <input type="date" id="data">
 
-    <label>Turno disponível</label>
-    <div id="turnos" class="turnos"></div>
+    <label>Turno</label>
+    <select id="turno">
+      <option value="">Selecione</option>
+      <option value="Manhã">Manhã (09:00–14:00)</option>
+      <option value="Tarde">Tarde (16:00–21:00)</option>
+      <option value="Dia todo">Dia todo (09:00–21:00)</option>
+    </select>
+
 
     <button id="btnReservar">Confirmar Reserva</button>
   </section>
