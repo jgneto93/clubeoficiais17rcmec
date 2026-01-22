@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+}
+
+.hero {
+  height: 280px;
+  background: url("../assets/capa.jpg") center/cover no-repeat;
+  position: relative;
+}
+
+.overlay {
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: -60px auto 40px;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card h2 {
+  margin-top: 0;
+  border-bottom: 2px solid #0a3d62;
+  padding-bottom: 5px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.turnos {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.turnos button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background: #0a3d62;
+  color: #fff;
+  cursor: pointer;
+}
+
+.turnos button.selecionado {
+  background: #38ada9;
+}
+
+button#btnReservar {
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  background: #1e3799;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.mensagem {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
