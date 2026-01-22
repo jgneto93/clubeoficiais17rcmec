@@ -4,6 +4,7 @@ body {
   background: #eef1f4;
 }
 
+/* Cabeçalho */
 .hero {
   height: 240px;
   background: linear-gradient(120deg, #1e3799, #0a3d62);
@@ -14,6 +15,17 @@ body {
   text-align: center;
 }
 
+.overlay h1 {
+  margin: 0;
+  font-size: 2.2rem;
+}
+
+.overlay p {
+  margin-top: 8px;
+  font-size: 1.1rem;
+}
+
+/* Conteúdo */
 .container {
   max-width: 720px;
   margin: -40px auto 40px;
@@ -24,55 +36,82 @@ body {
   background: #fff;
   border-radius: 10px;
   padding: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 .card h2 {
   margin-top: 0;
   color: #1e3799;
+  border-bottom: 2px solid #1e3799;
+  padding-bottom: 5px;
 }
 
+/* Formulário */
 label {
-  font-weight: 600;
-  margin-top: 10px;
   display: block;
+  margin-top: 12px;
+  font-weight: 600;
 }
 
-.turnos {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  font-size: 15px;
 }
 
-.turnos button {
-  flex: 1;
-  min-width: 120px;
-  background: #dcdde1;
-  color: #2f3640;
-  border-radius: 6px;
-  padding: 12px;
-}
-
-.turnos button.selecionado {
-  background: #1e3799;
-  color: #fff;
-}
-
-#btnReservar {
+button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 14px;
+  font-size: 16px;
   background: #009432;
-  margin-top: 15px;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
+button:hover {
+  opacity: 0.9;
+}
+
+/* Grid */
 .grid-2 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 12px;
 }
 
+/* Mensagens */
+.mensagem {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.mensagem.sucesso {
+  background: #dff9fb;
+  color: #065f46;
+  border: 1px solid #34d399;
+}
+
+.mensagem.erro {
+  background: #fdecea;
+  color: #7f1d1d;
+  border: 1px solid #f87171;
+}
+
+/* Mobile */
 @media (max-width: 600px) {
   .grid-2 {
     grid-template-columns: 1fr;
   }
-}
 
+  .overlay h1 {
+    font-size: 1.8rem;
+  }
+}
