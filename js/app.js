@@ -54,33 +54,39 @@ function selecionarTurno(botao, turno) {
   turnoSelecionado = turno;
 }
 
-document.getElementById("btnReservar").onclick = async () => {
-  const turno = document.getElementById("turno").value;
-
-  if (!turno) {
-    mensagem.innerText = "Selecione um turno";
-    return;
-  }
-
-  const dados = {
-    nome: document.getElementById("nome").value,
-    posto: document.getElementById("posto").value,
-    local: document.getElementById("local").value,
-    data: document.getElementById("data").value,
-    turno: turno
+  document.getElementById("btnReservar").onclick = async () => {
+  
+    const turnoSelect = document.getElementById("turno");
+    const turno = turnoSelect.value;
+  
+    console.log("Turno selecionado:", turno); // debug
+  
+    if (!turno) {
+      mensagem.innerText = "Selecione um turno";
+      return;
+    }
+  
+    const dados = {
+      nome: document.getElementById("nome").value.trim(),
+      posto: document.getElementById("posto").value.trim(),
+      local: document.getElementById("local").value,
+      data: document.getElementById("data").value,
+      turno: turno
+    };
+  
+    const res = await fetch(API, {
+      method: "POST",
+      body: JSON.stringify(dados)
+    });
+  
+    const r = await res.json();
+  
+    mensagem.innerText =
+      r.status === "ok"
+        ? "Reserva confirmada!"
+        : "⚠️ Este local já está reservado nesse turno.";
   };
 
-  const res = await fetch(API, {
-    method: "POST",
-    body: JSON.stringify(dados)
-  });
-
-  const r = await res.json();
-  mensagem.innerText =
-    r.status === "ok"
-      ? "Reserva confirmada!"
-      : "⚠️ Este local já está reservado nesse turno.";
-};
 
   const dados = {
     nome: document.getElementById("nome").value,
